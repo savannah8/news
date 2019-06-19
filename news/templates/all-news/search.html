@@ -1,0 +1,23 @@
+{% extends 'all-news/base.html'%}
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        {% if articles%}
+        <h2>Found {{ articles|length}} of searched term {{message}}</h2>
+        {%else%}
+        <h2>Found 0 articles for the search term {{message}}</h2>
+        {%endif%}
+
+    </div>
+    <div class="col-md-6">
+        {%if articles%}
+        {%for article in articles%}
+       
+                <img src="{{article.article_image.url}}" alt="image" style="width:600px; height:350px;">
+                <a href="{% url 'newsToday'%}"><h1 style="font-size:30px;">{{article.title}}</h1></a>
+        </div>
+        {%endfor%}
+        {%endif%}
+</div>
+{%endblock%}
